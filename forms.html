@@ -1,56 +1,13 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Formulário</title>
     <meta charset="utf-8">
     <link rel="icon" href="favicon.png">
     <link rel="stylesheet" href="estilo.css">
 </head>
-
-<script language="JavaScript">
-    function enviardados() {
-        if (document.dados.nome.value == "" ||
-            document.dados.nome.value.length < 8) {
-            alert("Ei, você precisa preencher o nome!");
-            document.dados.nome.focus();
-            return false;
-        }
-
-
-        if (document.dados.email.value == "" ||
-            document.dados.email.value.indexOf('@') == -1 ||
-            document.dados.email.value.indexOf('.') == -1) {
-            alert("Ei, você precisa preencher o e-mail!");
-            document.dados.email.focus();
-            return false;
-        }
-
-        if (document.dados.data.value == "") {
-            alert("Ei, você precisa informar a data!");
-            document.dados.data.focus();
-            return false;
-        }
-
-        return true;
-    }
-
-	function chamaFuncao(){
-         
-         var x=0;
-		 var nome = document.dados.nome.value ;		
-         var email = document.dados.email.value;
-         var data = document.dados.data.value;
-			document.getElementById("campo").innerHTML= nome; 
-            document.getElementById("campo1").innerHTML= email; 
-            document.getElementById("campo2").innerHTML= data; 
-		
-	}
-
-</script>
-
 <body>
-    <form method="post" name="dados"  id="formulario">
+    <form method="post" name="dados"  id="formulario" onsubmit="enviarDados();return false">
         <legend>Lista de Aniversário</legend>
         <hr>
         <label for="nome"><strong>Nome:</strong></label>
@@ -65,14 +22,77 @@
         <br><br>
         <ol>
             <li>
-                <input name="Submit" type="submit" class="formobjects" onclick="chamaFuncao()" value="Inserir" id="enviar">
+                <input name="Submit" type="submit" class="formobjects" value="Inserir" id="enviar">
                 <input name="Reset" type="reset" class="formobjects" value="Limpar" id="limpar">
             </li>
         </ol>
     </form>
+    <table id="aniversariantes">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Aniversario</th>
+                <th>Excluir</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- AQUI SERAO INSERIDOS OS DADOS -->
+        </tbody>
+    </table>
 <p id="campo"></p>
 <p id="campo1"></p>
 <p id="campo2"></p>
+
+    <script>
+        function enviarDados() {
+            var nome = document.dados.nome.value;		
+            var email = document.dados.email.value;
+            var data = document.dados.data.value;
+
+            if (nome == "" ||
+                nome.length < 8) {
+                alert("Ei, você precisa preencher o nome!");
+                document.dados.nome.focus();
+                return false;
+            }
+
+            if (email == "" ||
+                email.indexOf('@') == -1 ||
+                email.indexOf('.') == -1) {
+                alert("Ei, você precisa preencher o e-mail!");
+                document.dados.email.focus();
+                return false;
+            }
+
+            if (data == "") {
+                alert("Ei, você precisa informar a data!");
+                document.dados.data.focus();
+                return false;
+            }
+
+            var tabelaAniversariantes = document.querySelector("#aniversariantes");
+
+            var bodyTabelaAniversariantes = tabelaAniversariantes.tBodies[0];
+            console.log(bodyTabelaAniversariantes)
+
+            var tr = bodyTabelaAniversariantes.insertRow(0);
+            var tdId = tr.insertCell(0);
+            var tdNome = tr.insertCell(1);
+            var tdEmail = tr.insertCell(2);
+            var tdAniversario = tr.insertCell(3);
+            var tdExcluir = tr.insertCell(4);
+
+            tdId.innerHTML = "INSERIR O ID AQUI";
+            tdNome.innerHTML = nome;
+            tdEmail.innerHTML = email;
+            tdAniversario.innerHTML = data;
+            tdExcluir.innerHTML = "INSERIR O BOTAO AQUI";
+
+            return true;
+        }
+    </script>
 
 </body>
 
