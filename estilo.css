@@ -1,0 +1,57 @@
+html {
+  background-color: rgb(241, 246, 252);
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+
+legend {
+  font-size: 27px;
+}
+
+#email {
+  padding: 5px;
+  margin-left: 10px;
+}
+
+#nome {
+  padding: 5px;
+  margin-left: 12px;
+}
+
+#data {
+  padding: 5px;
+  margin-left: 23px;
+  width: 170px;
+}
+
+hr {
+  margin-bottom: 50px;
+}
+
+ol {
+  margin: 0 auto;
+  margin-right: 200px;
+}
+
+li {
+  list-style: none;
+  text-decoration: none;
+  margin-right: 200px;
+
+}
+
+#enviar {
+  color: #ffffff;
+  background-color: rgb(52, 105, 184);
+  border: rgb(52, 105, 184);
+  border-radius: 6px;
+  padding: 8px;
+  width: 70px;
+}
+
+#limpar{
+  border-radius: 6px;
+  border: silver;
+  padding: 8px;
+  width: 70px;
+}

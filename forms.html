@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Formulário</title>
+    <meta charset="utf-8">
+    <link rel="icon" href="favicon.png">
+    <link rel="stylesheet" href="estilo.css">
+</head>
+
+<script language="JavaScript">
+    function enviardados() {
+        if (document.dados.nome.value == "" ||
+            document.dados.nome.value.length < 8) {
+            alert("Ei, você precisa preencher o nome!");
+            document.dados.nome.focus();
+            return false;
+        }
+
+
+        if (document.dados.email.value == "" ||
+            document.dados.email.value.indexOf('@') == -1 ||
+            document.dados.email.value.indexOf('.') == -1) {
+            alert("Ei, você precisa preencher o e-mail!");
+            document.dados.email.focus();
+            return false;
+        }
+
+        if (document.dados.data.value == "") {
+            alert("Ei, você precisa informar a data!");
+            document.dados.data.focus();
+            return false;
+        }
+
+        return true;
+    }
+
+	function chamaFuncao(){
+         
+         var x=0;
+		 var nome = document.dados.nome.value ;		
+         var email = document.dados.email.value;
+         var data = document.dados.data.value;
+			document.getElementById("campo").innerHTML= nome; 
+            document.getElementById("campo1").innerHTML= email; 
+            document.getElementById("campo2").innerHTML= data; 
+		
+	}
+
+</script>
+
+<body>
+    <form method="post" name="dados"  id="formulario">
+        <legend>Lista de Aniversário</legend>
+        <hr>
+        <label for="nome"><strong>Nome:</strong></label>
+        <input id="nome" type=text required name=nome/>
+        <br><br>
+        <label for="email"><strong>E-mail:</strong></label>
+        <input id="email" type=text required name=email />
+
+        <br><br>
+        <label for="data"><strong>Data:</strong></label>
+        <input id="data" type=date required name=data />
+        <br><br>
+        <ol>
+            <li>
+                <input name="Submit" type="submit" class="formobjects" onclick="chamaFuncao()" value="Inserir" id="enviar">
+                <input name="Reset" type="reset" class="formobjects" value="Limpar" id="limpar">
+            </li>
+        </ol>
+    </form>
+<p id="campo"></p>
+<p id="campo1"></p>
+<p id="campo2"></p>
+
+</body>
+
+</html>
