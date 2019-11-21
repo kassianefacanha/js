@@ -6,34 +6,33 @@
     <link rel="icon" href="favicon.png">
     <link rel="stylesheet" href="estilo.css">
 </head>
-<body>
-    <form method="post" name="dados"  id="formulario" onsubmit="enviarDados();return false">
+<body> 
         <legend>Lista de Aniversário</legend>
         <hr>
         <label for="nome"><strong>Nome:</strong></label>
-        <input id="nome" type=text required name=nome/>
+        <input id="nome" type=text required name=nome onmouseout="validar()" />
         <br><br>
         <label for="email"><strong>E-mail:</strong></label>
-        <input id="email" type=text required name=email />
+        <input id="email" type=text required name=email onmouseout="validar()"/>
 
         <br><br>
         <label for="data"><strong>Data:</strong></label>
-        <input id="data" type=date required name=data />
+        <input id="data" type=date required name=data onmouseout="validar()"/>
         <br><br>
         <ol>
             <li>
-                <input name="Submit" type="submit" class="formobjects" value="Inserir" id="enviar">
-                <input name="Reset" type="reset" class="formobjects" value="Limpar" id="limpar">
+                
+            <button id = "enviar" onclick="add()">Inserir</button>
+            <button id = "limpar" onclick= "res()">Limpar</button>
             </li>
         </ol>
-    </form>
-    <table id="aniversariantes">
+    <table id="table">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Nome</th>
                 <th>Email</th>
-                <th>Aniversario</th>
+                <th>Aniver</th>
                 <th>Excluir</th>
             </tr>
         </thead>
@@ -44,12 +43,10 @@
 
 
     <script>
-        var x=0;
-        function enviarDados() {
-            var nome = document.dados.nome.value;		
-            var email = document.dados.email.value;
-            var data = document.dados.data.value;
-
+        function validar() {
+            let nome = document.getElementById("nome");
+           let email = document.getElementById("email");
+            let data = document.getElementById("data");
             if (nome == "" ||
                 nome.length < 8) {
                 alert("Ei, você precisa preencher o nome!");
@@ -70,33 +67,50 @@
                 document.dados.data.focus();
                 return false;
             }
-
-            var tabelaAniversariantes = document.querySelector("#aniversariantes");
-
-            var bodyTabelaAniversariantes = tabelaAniversariantes.tBodies[0];
-            console.log(bodyTabelaAniversariantes)
-
-            var tr = bodyTabelaAniversariantes.insertRow(x);
-            var tdId = tr.insertCell(0);
-            var tdNome = tr.insertCell(1);
-            var tdEmail = tr.insertCell(2);
-            var tdAniversario = tr.insertCell(3);
-            var tdExcluir = tr.insertCell(4);
-            var id = x++;
-
-            tdId.innerHTML = id;
-            tdNome.innerHTML = nome;
-            tdEmail.innerHTML = email;
-            tdAniversario.innerHTML = data;
-            tdExcluir.innerHTML = "<button class = 'excluir' onclick = 'excluir( " + id +" )'>Excluir</button>";
-
-            return true;
         }
+            
+let nome = document.getElementById("nome");
+let email = document.getElementById("email");
+let data = document.getElementById("data");
 
-        function excluir(id){
-            TabelaAniversariantes.splice(TabelaAniversariantes.indexOf(id) , 1);
-          enviarDados();
-          }
+let niver = [];
+let obj;
+
+function dados(){
+    table.innerHTML = "<td><th>ID</th><th>Nome</th><th>Email</th><th>Aniversário</th><th>Excluir</th></tr>";
+    for (obj of niver){
+        let table = document.getElementById("table");
+        let newline = table.insertRow(-1);
+        let a = newline.insertCell(0);
+        let b = newline.insertCell(1);
+        let c = newline.insertCell(2);
+        let d = newline.insertCell(3);
+        let e = newline.insertCell(4);
+        a.innerHTML = niver.indexOf(obj);
+        b.innerHTML = obj.nome;
+        c.innerHTML = obj.email;
+        d.innerHTML = obj.data;
+        e.innerHTML = "<button class = 'excluir' onclick = 'exc( " + obj.id +" )'>Excluir</button>"
+    }
+}
+
+function add(){
+    let item = {nome : nome.value , email : email.value , data : data.value}
+    niver.push(item)
+    dados();
+}
+
+function res(){
+    nome.value = "";
+    email.value = "";
+    data.value= "";
+}
+
+function exc(id){
+    niver.splice(id , 1);
+    dados();
+}
+
     </script>
 
 </body>
