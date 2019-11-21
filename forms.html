@@ -41,11 +41,10 @@
             <!-- AQUI SERAO INSERIDOS OS DADOS -->
         </tbody>
     </table>
-<p id="campo"></p>
-<p id="campo1"></p>
-<p id="campo2"></p>
+
 
     <script>
+        var x=0;
         function enviarDados() {
             var nome = document.dados.nome.value;		
             var email = document.dados.email.value;
@@ -77,18 +76,19 @@
             var bodyTabelaAniversariantes = tabelaAniversariantes.tBodies[0];
             console.log(bodyTabelaAniversariantes)
 
-            var tr = bodyTabelaAniversariantes.insertRow(0);
+            var tr = bodyTabelaAniversariantes.insertRow(x);
             var tdId = tr.insertCell(0);
             var tdNome = tr.insertCell(1);
             var tdEmail = tr.insertCell(2);
             var tdAniversario = tr.insertCell(3);
             var tdExcluir = tr.insertCell(4);
+            
 
-            tdId.innerHTML = "INSERIR O ID AQUI";
+            tdId.innerHTML = x++;
             tdNome.innerHTML = nome;
             tdEmail.innerHTML = email;
             tdAniversario.innerHTML = data;
-            tdExcluir.innerHTML = "INSERIR O BOTAO AQUI";
+            tdExcluir.innerHTML = ;
 
             return true;
         }
