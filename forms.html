@@ -88,10 +88,15 @@
             tdNome.innerHTML = nome;
             tdEmail.innerHTML = email;
             tdAniversario.innerHTML = data;
-            tdExcluir.innerHTML = ;
+            tdExcluir.innerHTML = "<button class = 'excluir' onclick = 'excluir( " + tdId +" )'>Excluir</button>";
 
             return true;
         }
+
+        function excluir(id){
+          splice(id , 1);
+          enviarDados();
+          }
     </script>
 
 </body>
