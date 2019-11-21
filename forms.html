@@ -82,19 +82,19 @@
             var tdEmail = tr.insertCell(2);
             var tdAniversario = tr.insertCell(3);
             var tdExcluir = tr.insertCell(4);
-            
+            var id = x++;
 
-            tdId.innerHTML = x++;
+            tdId.innerHTML = id;
             tdNome.innerHTML = nome;
             tdEmail.innerHTML = email;
             tdAniversario.innerHTML = data;
-            tdExcluir.innerHTML = "<button class = 'excluir' onclick = 'excluir( " + tdId +" )'>Excluir</button>";
+            tdExcluir.innerHTML = "<button class = 'excluir' onclick = 'excluir( " + id +" )'>Excluir</button>";
 
             return true;
         }
 
         function excluir(id){
-          splice(id , 1);
+            TabelaAniversariantes.splice(TabelaAniversariantes.indexOf(id) , 1);
           enviarDados();
           }
     </script>
